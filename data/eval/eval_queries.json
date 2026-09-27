@@ -1,0 +1,14 @@
+[
+  {
+    "query": "3-seater steel office chair",
+    "expected_is": ["IS 7390:2024"],
+    "category": "furniture",
+    "notes": "Checks basic exact match and classification"
+  },
+  {
+    "query": "PVC pipes for drinking water",
+    "expected_is": ["IS 4985:2021"],
+    "category": "civil",
+    "notes": "Classic procurement item"
+  }
+]
