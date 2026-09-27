@@ -4,15 +4,16 @@ from contextlib import asynccontextmanager
 from app.database import init_db
 from app.api import api_router
 from app.middleware.rate_limit import RateLimitMiddleware
+from app.services.cache import init_redis, close_redis
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
     await init_db()
-    # Placeholder for Redis connection initialization
+    await init_redis()
     yield
-    # Shutdown placeholder
-    pass
+    # Shutdown
+    await close_redis()
 
 app = FastAPI(
     title="SIH26108 Recommendation Engine",
