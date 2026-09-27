@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, Request, BackgroundTasks
 from sqlmodel.ext.asyncio.session import AsyncSession
-from app.database import get_session
+from app.database import get_session, engine
 from app.schemas.recommend import RecommendRequest, RecommendResponse, Recommendation, MetadataInfo
+from app.models.query_log import QueryLog
 from app.services.cache import get_cached, set_cached, generate_key
 from app.services.embedder import embed
 from app.utils.language import detect_language
@@ -14,10 +15,38 @@ import uuid
 
 router = APIRouter()
 
+async def log_query_task(
+    query_id: uuid.UUID,
+    query_text: str,
+    detected_lang: str,
+    translated_text: str,
+    category_hint: str,
+    retrieved_ids: list,
+    retrieval_scores: list,
+    llm_response: dict,
+    total_latency_ms: int,
+):
+    async with AsyncSession(engine) as session:
+        log = QueryLog(
+            id=query_id,
+            query_text=query_text,
+            detected_lang=detected_lang,
+            translated_text=translated_text,
+            category_hint=category_hint,
+            retrieved_ids=retrieved_ids,
+            retrieval_scores=retrieval_scores,
+            llm_response=llm_response,
+            llm_model="gemini-2.0-flash",
+            total_latency_ms=total_latency_ms,
+        )
+        session.add(log)
+        await session.commit()
+
 @router.post("", response_model=RecommendResponse)
 async def recommend_standards(
     request: RecommendRequest,
     req: Request,
+    background_tasks: BackgroundTasks,
     session: AsyncSession = Depends(get_session)
 ):
     start_time = time.time()
@@ -33,8 +62,10 @@ async def recommend_standards(
     # 2. Language Detection & Translation
     lang = request.language or detect_language(request.query)
     search_query = request.query
+    translated_text = None
     if lang == 'hi':
         search_query = await translate_to_english(request.query)
+        translated_text = search_query
         
     # 3. Embed Query
     query_vector = await embed(search_query)
@@ -72,7 +103,25 @@ async def recommend_standards(
         )
     )
     
+    response_dump = response.model_dump(mode="json")
+    
     # Cache
-    await set_cached(cache_key, response.model_dump(mode="json"), ttl_seconds=3600)
+    await set_cached(cache_key, response_dump, ttl_seconds=3600)
+    
+    retrieved_ids = [c['id'] for c in candidates]
+    retrieval_scores = [c.get('rrf_score', 0.0) for c in candidates]
+    
+    background_tasks.add_task(
+        log_query_task,
+        query_id=query_id,
+        query_text=request.query,
+        detected_lang=lang,
+        translated_text=translated_text,
+        category_hint=request.category,
+        retrieved_ids=retrieved_ids,
+        retrieval_scores=retrieval_scores,
+        llm_response={"recommendations": recommendations_data, "warnings": []},
+        total_latency_ms=latency_ms
+    )
     
     return response
