@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     REDIS_URL: str = "redis://localhost:6379"
     GEMINI_API_KEY: str = ""
     GROQ_API_KEY: str = ""
+    GROQ_MODEL: Optional[str] = None
     BGE_INFERENCE_URL: str = "http://localhost:8080/embed"
     BGE_RERANKER_URL: str = "http://localhost:8081/rerank"
     JWT_SECRET: str = "supersecretkey_please_change_in_production"

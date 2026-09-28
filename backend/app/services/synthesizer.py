@@ -1,11 +1,46 @@
 import litellm
 import json
 import os
+import httpx
 from app.config import settings
 from typing import List, Dict, Any, Tuple
 import logging
 
 logger = logging.getLogger(__name__)
+
+async def get_active_groq_models(groq_key: str) -> List[str]:
+    # 1. Custom specified model in environment
+    custom_model = getattr(settings, "GROQ_MODEL", None) or os.environ.get("GROQ_MODEL")
+    if custom_model:
+        prefix = "" if custom_model.startswith("groq/") else "groq/"
+        return [f"{prefix}{custom_model}"]
+    
+    # 2. Dynamic discovery from Groq API (always fetches currently active models on account)
+    try:
+        async with httpx.AsyncClient(timeout=4.0) as client:
+            resp = await client.get(
+                "https://api.groq.com/openai/v1/models",
+                headers={"Authorization": f"Bearer {groq_key}"}
+            )
+            if resp.status_code == 200:
+                data = resp.json()
+                models = [
+                    f"groq/{m['id']}" for m in data.get("data", [])
+                    if m.get("active", True) and not any(k in m["id"] for k in ["whisper", "guard", "audio", "embed"])
+                ]
+                if models:
+                    logger.info(f"Discovered active Groq models: {models[:4]}")
+                    return models
+    except Exception as e:
+        logger.warning(f"Could not auto-fetch active models from Groq API: {e}")
+
+    # 3. Known active open-weight models
+    return [
+        "groq/openai/gpt-oss-120b",
+        "groq/openai/gpt-oss-20b",
+        "groq/meta-llama/llama-4-scout-17b-16e-instruct",
+        "groq/qwen/qwen3-32b",
+    ]
 
 async def synthesize(
     query: str, 
@@ -66,14 +101,10 @@ Respond in JSON format with a list of recommendations matching this schema:
         except Exception as e:
             logger.warning(f"Gemini synthesis with gemini/gemini-3.8-flash failed ({e}). Falling back to Groq...")
 
-    # 2. Fallback: Try Groq
+    # 2. Fallback: Dynamic Groq models
     groq_key = settings.GROQ_API_KEY or os.environ.get("GROQ_API_KEY")
     if groq_key:
-        groq_models = [
-            "groq/llama-3.3-70b-versatile",
-            "groq/llama-3.1-70b-versatile",
-            "groq/llama-3.1-8b-instant"
-        ]
+        groq_models = await get_active_groq_models(groq_key)
         for g_model in groq_models:
             try:
                 response = await litellm.acompletion(

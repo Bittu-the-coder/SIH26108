@@ -48,6 +48,7 @@ services:
       BGE_INFERENCE_URL: http://tei:80/embed
       GEMINI_API_KEY: ${GEMINI_API_KEY}
       GROQ_API_KEY: ${GROQ_API_KEY}
+      GROQ_MODEL: ${GROQ_MODEL}
       JWT_SECRET: ${JWT_SECRET:-dev_secret}
     depends_on:
       db:
