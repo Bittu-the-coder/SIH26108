@@ -152,7 +152,7 @@ export default function DashboardOverviewPage() {
                 >
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "4px" }}>
-                      <Badge variant="default">{item.category}</Badge>
+                      <Badge variant="default">{item.detected_language === "hi" ? "हिन्दी" : "English"}</Badge>
                       <span className="body-sm" style={{ fontSize: "11px" }}>{item.timestamp}</span>
                     </div>
                     <p style={{ fontSize: "13px", fontWeight: 500, color: "var(--color-ink)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>

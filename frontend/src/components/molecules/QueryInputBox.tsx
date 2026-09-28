@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { useAppStore } from "@/lib/store";
 import { getRecommendations } from "@/lib/api";
-import { Button } from "../atoms/Button";
 import { Sparkles, Loader2, ArrowRight } from "lucide-react";
 
 const SAMPLE_PROMPTS = [
@@ -22,7 +21,7 @@ const SAMPLE_PROMPTS = [
   {
     label: "हिन्दी: निर्माण सीमेंट और सरिया",
     text: "भूकंप रोधी बहुमंजिला आवासीय निर्माण के लिए Fe 500D स्टील सरिया और 53 ग्रेड साधारण पोर्टलैंड सीमेंट की आपूर्ति।",
-  }
+  },
 ];
 
 export function QueryInputBox() {
@@ -33,6 +32,7 @@ export function QueryInputBox() {
     setCurrentResult,
     isLoading,
     setIsLoading,
+    setError,
     addHistoryItem,
   } = useAppStore();
 
@@ -41,19 +41,28 @@ export function QueryInputBox() {
   const handleAnalyze = async () => {
     if (!inputVal.trim()) return;
     setIsLoading(true);
+    setError(null);
     setSearchQuery(inputVal);
 
     try {
-      const res = await getRecommendations(inputVal, language);
+      const res = await getRecommendations({
+        query: inputVal,
+        language,
+        top_k: 5,
+        include_allied: true,
+      });
       setCurrentResult(res);
       addHistoryItem({
         id: `hist-${Date.now()}`,
         query: inputVal,
         timestamp: "Just now",
         recommendation_count: res.recommendations.length,
-        top_standard: res.recommendations[0]?.standard.standard_number || "None",
-        category: res.detected_category,
+        top_standard: res.recommendations[0]?.is_number || "None",
+        detected_language: res.detected_language,
       });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Recommendation request failed");
+      setCurrentResult(null);
     } finally {
       setIsLoading(false);
     }
@@ -77,7 +86,7 @@ export function QueryInputBox() {
           Procurement Technical Specification or Tender Clause
         </label>
         <span className="mono-eyebrow" style={{ fontSize: "11px" }}>
-          FREE-TEXT / UNSTRUCTURED / BILINGUAL (EN/HI)
+          FREE-TEXT / BILINGUAL (EN/HI)
         </span>
       </div>
 
@@ -88,11 +97,7 @@ export function QueryInputBox() {
         value={inputVal}
         onChange={(e) => setInputVal(e.target.value)}
         placeholder="e.g. Supply and delivery of 1100V grade 3-core copper conductor FRLS insulated power cables for underground metro tunnel illumination..."
-        style={{
-          fontSize: "14px",
-          lineHeight: "22px",
-          marginBottom: "var(--space-md)",
-        }}
+        style={{ fontSize: "14px", lineHeight: "22px", marginBottom: "var(--space-md)" }}
       />
 
       {/* Sample Template Pills */}
@@ -103,14 +108,9 @@ export function QueryInputBox() {
             key={idx}
             onClick={() => setInputVal(p.text)}
             style={{
-              padding: "3px 10px",
-              borderRadius: "var(--radius-pill)",
-              backgroundColor: "var(--color-hairline-soft)",
-              border: "1px solid var(--color-hairline)",
-              fontSize: "11px",
-              fontWeight: 500,
-              color: "var(--color-body)",
-              cursor: "pointer",
+              padding: "3px 10px", borderRadius: "var(--radius-pill)",
+              backgroundColor: "var(--color-hairline-soft)", border: "1px solid var(--color-hairline)",
+              fontSize: "11px", fontWeight: 500, color: "var(--color-body)", cursor: "pointer",
               transition: "all 0.15s ease",
             }}
           >
@@ -130,9 +130,7 @@ export function QueryInputBox() {
           disabled={isLoading || !inputVal.trim()}
           className="btn-primary"
           style={{
-            height: "40px",
-            padding: "0 18px",
-            fontSize: "14px",
+            height: "40px", padding: "0 18px", fontSize: "14px",
             opacity: isLoading || !inputVal.trim() ? 0.7 : 1,
           }}
         >

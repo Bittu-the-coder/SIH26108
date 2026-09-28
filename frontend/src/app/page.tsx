@@ -236,12 +236,12 @@ export default function HomePage() {
                 </h3>
               </div>
               <div className="badge badge-green">
-                ⚡ {currentResult.execution_time_ms}ms · {currentResult.total_standards_evaluated} Standards Evaluated
+                ⚡ {currentResult.metadata?.total_latency_ms ?? 0}ms · {currentResult.recommendations.length} Standards Recommended
               </div>
             </div>
 
-            {currentResult.recommendations.slice(0, 2).map((rec) => (
-              <RecommendationCard key={rec.standard.id} item={rec} queryId={currentResult.query_id} />
+            {currentResult.recommendations.slice(0, 2).map((rec, idx) => (
+              <RecommendationCard key={rec.is_number} item={rec} index={idx} queryId={currentResult.query_id} />
             ))}
 
             <div style={{ textAlign: "center", marginTop: "var(--space-lg)" }}>

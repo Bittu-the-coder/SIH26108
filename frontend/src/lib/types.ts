@@ -1,59 +1,166 @@
-export type StandardStatus = "ACTIVE" | "REVISED" | "WITHDRAWN" | "UNDER_REVIEW";
+// ─── Types aligned to backend OpenAPI schema (http://15.207.14.224/openapi.json) ───
+// Demo/mock data also uses these types for offline-first fallback.
 
-export interface CrossReference {
-  standard_id: string;
-  standard_number: string;
-  relation_type: "REFERENCED_BY" | "SUPERSEDES" | "SUPERSEDED_BY" | "COMPLEMENTARY";
-  clause?: string;
-}
+// ─── Status enums matching backend exactly ───
+export type StandardStatus = "current" | "superseded" | "withdrawn" | "under_revision";
 
-export interface Standard {
-  id: string;
-  standard_number: string;
+export type FeedbackType =
+  | "thumbs_up"
+  | "thumbs_down"
+  | "wrong_standard"
+  | "missing_standard"
+  | "outdated_info";
+
+// ─── Standards ───
+
+export interface StandardBase {
+  is_number: string;
   title: string;
-  title_hindi?: string;
-  category: string;
-  subcategory: string;
-  publication_year: number;
-  status: StandardStatus;
-  abstract: string;
-  abstract_hindi?: string;
-  mandatory_status: boolean;
-  keywords: string[];
-  pdf_url?: string;
-  cross_references?: CrossReference[];
-  created_at: string;
-  updated_at: string;
+  status: string;
+  classification: string;
 }
 
-export interface MatchedClause {
-  clause_number: string;
-  clause_title: string;
-  snippet: string;
+export interface StandardDetail extends StandardBase {
+  id: string;
+  title_hi: string | null;
+  scope: string | null;
+  sub_group: string | null;
+  year_published: number | null;
+  latest_amendment: string | null;
+  certification: string;
+  source_url: string | null;
+  cross_references: Record<string, string[]>;
+  categories: string[];
 }
 
-export interface RecommendationItem {
-  standard: Standard;
-  confidence_score: number; // 0.0 to 1.0
-  relevance_rank: number;
-  explanation: string;
-  explanation_hindi?: string;
-  matched_clauses: MatchedClause[];
-  compliance_actions: string[];
-  is_mandatory: boolean;
+export interface PaginatedResponse<T> {
+  total: number;
+  page: number;
+  per_page: number;
+  results: T[];
 }
 
-export interface RecommendationResponse {
-  query_id: string;
+// ─── Recommendations (POST /recommend) ───
+
+export interface CertificationInfo {
+  scheme: string | null;
+  mandatory: boolean | null;
+  details: string | null;
+}
+
+export interface AlliedStandard {
+  is_number: string;
+  title: string;
+  relationship: string | null;
+  reason: string | null;
+}
+
+export interface Recommendation {
+  is_number: string;
+  title: string;
+  status: string | null;
+  confidence: number | null;
+  match_reason: string | null;
+  source_url: string | null;
+  certification: CertificationInfo | null;
+  supersession: string | null;
+  allied_standards: AlliedStandard[];
+}
+
+export interface WarningItem {
+  type: string;
+  message: string;
+}
+
+export interface MetadataInfo {
+  retrieval_method: string;
+  llm_model: string;
+  total_latency_ms: number;
+}
+
+export interface RecommendRequest {
   query: string;
-  language: "en" | "hi";
-  detected_category: string;
-  recommendations: RecommendationItem[];
-  execution_time_ms: number;
-  total_standards_evaluated: number;
+  category?: string | null;
+  top_k?: number;
+  include_allied?: boolean;
+  language?: string | null;
 }
 
-export interface CategorySummary {
+export interface RecommendResponse {
+  query_id: string;
+  detected_language: string;
+  recommendations: Recommendation[];
+  warnings: WarningItem[];
+  metadata: MetadataInfo | null;
+}
+
+// ─── Feedback (POST /feedback) ───
+
+export interface FeedbackRequest {
+  query_id: string;
+  feedback: FeedbackType;
+  correct_is?: string | null;
+  comment?: string | null;
+}
+
+export interface FeedbackResponse {
+  status: string;
+}
+
+// ─── Auth (POST /auth/login) ───
+
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+export interface TokenResponse {
+  access_token: string;
+  token_type: string;
+  expires_in: number;
+}
+
+// ─── Categories (GET /categories) ───
+
+export interface CategoryNode {
+  id: string;
+  name: string;
+  name_hi: string | null;
+  children?: CategoryNode[];
+  standard_count?: number;
+}
+
+export interface CategoriesResponse {
+  categories: CategoryNode[];
+}
+
+// ─── Client-side only (demo/history) ───
+
+export interface QueryHistoryItem {
+  id: string;
+  query: string;
+  timestamp: string;
+  recommendation_count: number;
+  top_standard: string;
+  detected_language: string;
+}
+
+// ─── Demo-enriched recommendation (adds fields only mock data provides) ───
+// Used exclusively by mockData.ts for offline demo mode.
+export interface DemoRecommendation extends Recommendation {
+  explanation_hindi?: string;
+  matched_clauses?: { clause_number: string; clause_title: string; snippet: string }[];
+  compliance_actions?: string[];
+}
+
+export interface DemoRecommendResponse extends Omit<RecommendResponse, "recommendations"> {
+  recommendations: DemoRecommendation[];
+  // Demo-only convenience fields
+  detected_category?: string;
+}
+
+// ─── Demo category (richer than backend stub) ───
+export interface DemoCategorySummary {
   id: string;
   code: string;
   name: string;
@@ -62,21 +169,4 @@ export interface CategorySummary {
   standard_count: number;
   subcategories: string[];
   icon: string;
-}
-
-export interface FeedbackSubmission {
-  query_id: string;
-  standard_id: string;
-  rating: number; // 1 (thumbs up) or -1 (thumbs down)
-  comment?: string;
-  suggested_standard_number?: string;
-}
-
-export interface QueryHistoryItem {
-  id: string;
-  query: string;
-  timestamp: string;
-  recommendation_count: number;
-  top_standard: string;
-  category: string;
 }

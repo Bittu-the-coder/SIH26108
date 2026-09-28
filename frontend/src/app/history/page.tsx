@@ -50,7 +50,7 @@ export default function HistoryPage() {
               >
                 <div style={{ flex: 1, minWidth: "280px" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
-                    <Badge variant="blue">{item.category}</Badge>
+                    <Badge variant="blue">{item.detected_language === "hi" ? "हिन्दी" : "English"}</Badge>
                     <span className="body-sm" style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                       <Clock size={12} /> {item.timestamp}
                     </span>

@@ -5,22 +5,36 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Logo } from "@/components/atoms/Logo";
 import { useAppStore } from "@/lib/store";
-import { ArrowRight, Lock, Mail, ShieldCheck, Sparkles } from "lucide-react";
+import { login as apiLogin } from "@/lib/api";
+import { ArrowRight, Lock, Mail, ShieldCheck, Sparkles, AlertCircle, Loader2 } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login } = useAppStore();
-  const [email, setEmail] = useState("officer.cpwd@nic.in");
-  const [password, setPassword] = useState("••••••••••••");
+  const { loginUser, loginDemo } = useAppStore();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    login({ email, name: "Er. Rajesh Kumar", department: "Central Public Works Department (CPWD)" });
-    router.push("/dashboard");
+    if (!email.trim() || !password.trim()) return;
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const tokenRes = await apiLogin({ email, password });
+      loginUser(tokenRes.access_token, { email });
+      router.push("/dashboard");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Login failed. Check your credentials.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleDemoLogin = () => {
-    login({
+    loginDemo({
       name: "Er. Rajesh Kumar",
       email: "officer.cpwd@nic.in",
       department: "Central Public Works Department (CPWD)",
@@ -81,12 +95,12 @@ export default function LoginPage() {
               </span>
             </div>
             <span className="badge badge-blue" style={{ fontSize: "10px" }}>
-              Pre-configured
+              No Backend Required
             </span>
           </div>
 
           <div className="body-sm" style={{ fontSize: "12px", color: "var(--color-body)", lineHeight: "16px" }}>
-            Pre-loaded profile: <strong style={{ color: "var(--color-ink)" }}>Er. Rajesh Kumar</strong> (CPWD Northern Division)
+            Pre-loaded profile: <strong style={{ color: "var(--color-ink)" }}>Er. Rajesh Kumar</strong> (CPWD Northern Division). Uses sample data — no backend connection needed.
           </div>
 
           <button
@@ -94,13 +108,8 @@ export default function LoginPage() {
             onClick={handleDemoLogin}
             className="btn-primary"
             style={{
-              width: "100%",
-              height: "40px",
-              fontSize: "13px",
-              fontWeight: 600,
-              justifyContent: "center",
-              gap: "8px",
-              whiteSpace: "nowrap",
+              width: "100%", height: "40px", fontSize: "13px", fontWeight: 600,
+              justifyContent: "center", gap: "8px", whiteSpace: "nowrap",
             }}
           >
             <Sparkles size={14} />
@@ -112,10 +121,25 @@ export default function LoginPage() {
         <div style={{ display: "flex", alignItems: "center", gap: "10px", margin: "var(--space-md) 0" }}>
           <div style={{ flex: 1, height: "1px", backgroundColor: "var(--color-hairline)" }} />
           <span className="body-sm" style={{ fontSize: "11px", color: "var(--color-mute)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
-            Or sign in with email
+            Or sign in with real account
           </span>
           <div style={{ flex: 1, height: "1px", backgroundColor: "var(--color-hairline)" }} />
         </div>
+
+        {/* Error Display */}
+        {error && (
+          <div
+            style={{
+              display: "flex", alignItems: "center", gap: "8px",
+              padding: "10px 14px", marginBottom: "var(--space-md)",
+              backgroundColor: "#fff5f5", border: "1px solid #fecaca",
+              borderRadius: "var(--radius-sm)", fontSize: "13px", color: "#991b1b",
+            }}
+          >
+            <AlertCircle size={15} style={{ flexShrink: 0 }} />
+            <span>{error}</span>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "var(--space-md)" }}>
           <div>
@@ -134,6 +158,7 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 className="text-input"
                 style={{ paddingLeft: "36px" }}
+                placeholder="officer@cpwd.gov.in"
                 required
               />
             </div>
@@ -160,14 +185,29 @@ export default function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 className="text-input"
                 style={{ paddingLeft: "36px" }}
+                placeholder="••••••••"
                 required
               />
             </div>
           </div>
 
-          <button type="submit" className="btn-primary" style={{ width: "100%", height: "42px", marginTop: "8px", justifyContent: "center" }}>
-            <span>Sign In to Portal</span>
-            <ArrowRight size={14} />
+          <button
+            type="submit"
+            disabled={submitting}
+            className="btn-primary"
+            style={{ width: "100%", height: "42px", marginTop: "8px", justifyContent: "center", opacity: submitting ? 0.7 : 1 }}
+          >
+            {submitting ? (
+              <>
+                <Loader2 size={16} className="animate-spin" />
+                <span>Signing in...</span>
+              </>
+            ) : (
+              <>
+                <span>Sign In to Portal</span>
+                <ArrowRight size={14} />
+              </>
+            )}
           </button>
         </form>
 

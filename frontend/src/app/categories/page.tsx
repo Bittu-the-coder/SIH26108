@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { MOCK_CATEGORIES } from "@/lib/mockData";
+import { DEMO_CATEGORIES } from "@/lib/mockData";
 import { SectionEyebrow } from "@/components/atoms/SectionEyebrow";
 import { ArrowRight, Building2, Zap, Armchair, ShieldAlert } from "lucide-react";
 
@@ -33,7 +33,7 @@ export default function CategoriesPage() {
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))", gap: "var(--space-xl)" }}>
-          {MOCK_CATEGORIES.map((cat) => (
+          {DEMO_CATEGORIES.map((cat) => (
             <div
               key={cat.id}
               className="card"

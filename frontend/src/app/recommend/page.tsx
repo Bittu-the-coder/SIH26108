@@ -5,25 +5,27 @@ import { QueryInputBox } from "@/components/molecules/QueryInputBox";
 import { RecommendationCard } from "@/components/molecules/RecommendationCard";
 import { SectionEyebrow } from "@/components/atoms/SectionEyebrow";
 import { useAppStore } from "@/lib/store";
+import { isDemoMode } from "@/lib/api";
 import {
-  Download,
   Copy,
   Check,
   Filter,
-  Sparkles,
   History,
-  FileCheck,
-  AlertTriangle
+  AlertTriangle,
+  AlertCircle,
+  Info,
 } from "lucide-react";
 
 export default function RecommendPage() {
-  const { currentResult, isLoading, history, setSearchQuery } = useAppStore();
+  const { currentResult, isLoading, error, history, setSearchQuery, isDemo } = useAppStore();
   const [filterMandatoryOnly, setFilterMandatoryOnly] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  const demoActive = isDemo || isDemoMode();
+
   const recommendations = currentResult?.recommendations || [];
   const displayedRecs = filterMandatoryOnly
-    ? recommendations.filter((r) => r.is_mandatory)
+    ? recommendations.filter((r) => r.certification?.mandatory === true)
     : recommendations;
 
   const handleCopyClauses = () => {
@@ -31,9 +33,8 @@ export default function RecommendPage() {
     const textToCopy = currentResult.recommendations
       .map(
         (r, i) =>
-          `${i + 1}. ${r.standard.standard_number} - ${r.standard.title}\n` +
-          `   Compliance Rationale: ${r.explanation}\n` +
-          `   Key Actions: ${r.compliance_actions.join("; ")}`
+          `${i + 1}. ${r.is_number} - ${r.title}\n` +
+          `   Rationale: ${r.match_reason || "N/A"}`
       )
       .join("\n\n");
 
@@ -57,7 +58,21 @@ export default function RecommendPage() {
           </p>
         </div>
 
-        {/* Two-Column Responsive Grid: Left is Input & History, Right is Results */}
+        {/* Demo Mode Indicator */}
+        {demoActive && (
+          <div
+            style={{
+              display: "flex", alignItems: "center", gap: "8px", padding: "10px 16px",
+              backgroundColor: "#eef6ff", border: "1px solid #b3d4fc", borderRadius: "var(--radius-sm)",
+              marginBottom: "var(--space-lg)", fontSize: "13px", color: "#1a56db",
+            }}
+          >
+            <Info size={15} />
+            <span><strong>Demo Mode</strong> — Showing pre-loaded sample data. Results are not from the live backend.</span>
+          </div>
+        )}
+
+        {/* Two-Column Responsive Grid */}
         <div className="recommend-layout-grid">
           {/* Left Column: Spec Input & Recent Queries */}
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-lg)" }}>
@@ -71,37 +86,69 @@ export default function RecommendPage() {
                   Recent Tender Queries
                 </span>
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                {history.slice(0, 4).map((h) => (
-                  <button
-                    key={h.id}
-                    onClick={() => setSearchQuery(h.query)}
-                    style={{
-                      textAlign: "left",
-                      padding: "8px 10px",
-                      borderRadius: "var(--radius-sm)",
-                      border: "1px solid var(--color-hairline)",
-                      backgroundColor: "var(--color-canvas)",
-                      fontSize: "12px",
-                      cursor: "pointer",
-                      transition: "all 0.15s ease",
-                    }}
-                  >
-                    <div style={{ fontWeight: 500, color: "var(--color-ink)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                      {h.query}
-                    </div>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginTop: "4px", color: "var(--color-mute)" }}>
-                      <span>Top: {h.top_standard}</span>
-                      <span>{h.timestamp}</span>
-                    </div>
-                  </button>
-                ))}
-              </div>
+              {history.length === 0 ? (
+                <p className="body-sm" style={{ padding: "12px 0", color: "var(--color-mute)" }}>
+                  No queries yet. Run an analysis to build history.
+                </p>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  {history.slice(0, 4).map((h) => (
+                    <button
+                      key={h.id}
+                      onClick={() => setSearchQuery(h.query)}
+                      style={{
+                        textAlign: "left",
+                        padding: "8px 10px",
+                        borderRadius: "var(--radius-sm)",
+                        border: "1px solid var(--color-hairline)",
+                        backgroundColor: "var(--color-canvas)",
+                        fontSize: "12px",
+                        cursor: "pointer",
+                        transition: "all 0.15s ease",
+                      }}
+                    >
+                      <div style={{ fontWeight: 500, color: "var(--color-ink)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                        {h.query}
+                      </div>
+                      <div style={{ display: "flex", justifyContent: "space-between", marginTop: "4px", color: "var(--color-mute)" }}>
+                        <span>Top: {h.top_standard}</span>
+                        <span>{h.timestamp}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Right Column: Engine Analysis & Standards Matches */}
+          {/* Right Column: Results */}
           <div>
+            {/* Error State */}
+            {error && (
+              <div
+                className="card"
+                style={{
+                  padding: "var(--space-lg)",
+                  display: "flex", alignItems: "flex-start", gap: "12px",
+                  backgroundColor: "#fff5f5", border: "1px solid #fecaca",
+                  marginBottom: "var(--space-lg)",
+                }}
+              >
+                <AlertCircle size={20} style={{ color: "#dc2626", flexShrink: 0, marginTop: "2px" }} />
+                <div>
+                  <div style={{ fontWeight: 600, fontSize: "14px", color: "#991b1b", marginBottom: "4px" }}>
+                    Request Failed
+                  </div>
+                  <p className="body-sm" style={{ color: "#7f1d1d" }}>
+                    {error}
+                  </p>
+                  <p className="body-sm" style={{ color: "#b91c1c", marginTop: "6px", fontSize: "12px" }}>
+                    Check if the backend at <code>{process.env.NEXT_PUBLIC_API_URL || "API"}</code> is reachable, or switch to Demo Mode.
+                  </p>
+                </div>
+              </div>
+            )}
+
             {isLoading ? (
               <div
                 className="card"
@@ -117,11 +164,8 @@ export default function RecommendPage() {
               >
                 <div
                   style={{
-                    width: "36px",
-                    height: "36px",
-                    borderRadius: "50%",
-                    border: "3px solid var(--color-hairline)",
-                    borderTopColor: "var(--color-primary)",
+                    width: "36px", height: "36px", borderRadius: "50%",
+                    border: "3px solid var(--color-hairline)", borderTopColor: "var(--color-primary)",
                     animation: "spin 0.8s linear infinite",
                   }}
                 />
@@ -138,30 +182,31 @@ export default function RecommendPage() {
                 {/* Result Statistics Bar */}
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    flexWrap: "wrap",
-                    gap: "12px",
-                    padding: "var(--space-md)",
-                    backgroundColor: "var(--color-canvas-elevated)",
-                    border: "1px solid var(--color-hairline)",
-                    borderRadius: "var(--radius-sm)",
-                    marginBottom: "var(--space-lg)",
+                    display: "flex", justifyContent: "space-between", alignItems: "center",
+                    flexWrap: "wrap", gap: "12px", padding: "var(--space-md)",
+                    backgroundColor: "var(--color-canvas-elevated)", border: "1px solid var(--color-hairline)",
+                    borderRadius: "var(--radius-sm)", marginBottom: "var(--space-lg)",
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                     <div>
-                      <div className="mono-eyebrow" style={{ fontSize: "11px" }}>DETECTED CATEGORY</div>
+                      <div className="mono-eyebrow" style={{ fontSize: "11px" }}>LANGUAGE</div>
                       <div style={{ fontWeight: 600, fontSize: "14px", color: "var(--color-ink)" }}>
-                        {currentResult.detected_category}
+                        {currentResult.detected_language === "hi" ? "हिन्दी" : "English"}
                       </div>
                     </div>
                     <div style={{ width: "1px", height: "24px", backgroundColor: "var(--color-hairline)" }} />
                     <div>
                       <div className="mono-eyebrow" style={{ fontSize: "11px" }}>MATCH LATENCY</div>
                       <div style={{ fontWeight: 600, fontSize: "14px", color: "var(--color-success)" }}>
-                        {currentResult.execution_time_ms} ms
+                        {currentResult.metadata?.total_latency_ms ?? "—"} ms
+                      </div>
+                    </div>
+                    <div style={{ width: "1px", height: "24px", backgroundColor: "var(--color-hairline)" }} />
+                    <div>
+                      <div className="mono-eyebrow" style={{ fontSize: "11px" }}>RETRIEVAL</div>
+                      <div style={{ fontWeight: 600, fontSize: "14px", color: "var(--color-ink)" }}>
+                        {currentResult.metadata?.retrieval_method?.replace(/_/g, " ") ?? "hybrid"}
                       </div>
                     </div>
                   </div>
@@ -171,17 +216,11 @@ export default function RecommendPage() {
                     <button
                       onClick={() => setFilterMandatoryOnly(!filterMandatoryOnly)}
                       style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "4px",
-                        padding: "6px 10px",
-                        fontSize: "12px",
-                        fontWeight: 500,
-                        borderRadius: "var(--radius-sm)",
-                        border: "1px solid var(--color-hairline)",
+                        display: "inline-flex", alignItems: "center", gap: "4px",
+                        padding: "6px 10px", fontSize: "12px", fontWeight: 500,
+                        borderRadius: "var(--radius-sm)", border: "1px solid var(--color-hairline)",
                         backgroundColor: filterMandatoryOnly ? "var(--color-hairline-soft)" : "transparent",
-                        color: "var(--color-ink)",
-                        cursor: "pointer",
+                        color: "var(--color-ink)", cursor: "pointer",
                       }}
                     >
                       <Filter size={13} />
@@ -199,28 +238,57 @@ export default function RecommendPage() {
                   </div>
                 </div>
 
+                {/* Warnings */}
+                {currentResult.warnings && currentResult.warnings.length > 0 && (
+                  <div style={{ marginBottom: "var(--space-lg)" }}>
+                    {currentResult.warnings.map((w, i) => (
+                      <div
+                        key={i}
+                        style={{
+                          display: "flex", alignItems: "center", gap: "8px",
+                          padding: "10px 14px", marginBottom: "8px",
+                          backgroundColor: "#fffbeb", border: "1px solid #fcd34d",
+                          borderRadius: "var(--radius-sm)", fontSize: "13px",
+                        }}
+                      >
+                        <AlertTriangle size={14} style={{ color: "#d97706" }} />
+                        <span style={{ color: "#92400e" }}><strong>{w.type}:</strong> {w.message}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 {/* Recommendations List */}
-                <div>
-                  {displayedRecs.map((rec) => (
-                    <RecommendationCard
-                      key={rec.standard.id}
-                      item={rec}
-                      queryId={currentResult.query_id}
-                    />
-                  ))}
-                </div>
+                {displayedRecs.length === 0 ? (
+                  <div className="card" style={{ padding: "var(--space-2xl)", textAlign: "center" }}>
+                    <AlertCircle size={24} style={{ color: "var(--color-mute)", marginBottom: "8px" }} />
+                    <p className="body-md" style={{ color: "var(--color-body)" }}>
+                      {filterMandatoryOnly
+                        ? "No mandatory standards found. Try removing the filter."
+                        : "No matching standards found for this query."}
+                    </p>
+                  </div>
+                ) : (
+                  <div>
+                    {displayedRecs.map((rec, idx) => (
+                      <RecommendationCard
+                        key={rec.is_number}
+                        item={rec}
+                        index={idx}
+                        queryId={currentResult.query_id}
+                        isDemo={demoActive}
+                      />
+                    ))}
+                  </div>
+                )}
 
                 {/* Missing Standard Feedback Callout */}
                 <div
                   className="card"
                   style={{
-                    backgroundColor: "var(--color-canvas)",
-                    padding: "var(--space-md)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: "12px",
-                    flexWrap: "wrap",
+                    backgroundColor: "var(--color-canvas)", padding: "var(--space-md)",
+                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    gap: "12px", flexWrap: "wrap",
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
