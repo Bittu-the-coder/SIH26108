@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 # Ensure backend app is in path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../backend')))
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 from app.database import engine
 from app.models.standard import Standard, StandardStatus, CertScheme
 from app.services.embedder import embed_batch
