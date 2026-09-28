@@ -9,9 +9,13 @@ from sqlmodel import SQLModel
 from app.models.standard import Standard
 from app.models.edge import StandardEdge
 
+from sqlalchemy import text
+
 async def create_tables():
     print("Creating database tables...")
     async with engine.begin() as conn:
+        print("Enabling pgvector extension...")
+        await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector;"))
         await conn.run_sync(SQLModel.metadata.create_all)
     print("Tables created successfully!")
 
