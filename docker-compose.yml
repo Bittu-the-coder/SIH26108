@@ -46,6 +46,7 @@ services:
       DATABASE_URL: postgresql+asyncpg://sih:${DB_PASSWORD:-sih_password}@db:5432/sih26108
       REDIS_URL: redis://redis:6379
       BGE_INFERENCE_URL: http://tei:80/embed
+      BGE_RERANKER_URL: http://tei-reranker:80/rerank
       GEMINI_API_KEY: ${GEMINI_API_KEY}
       GROQ_API_KEY: ${GROQ_API_KEY}
       GROQ_MODEL: ${GROQ_MODEL}

@@ -1,8 +1,11 @@
 from sqlmodel.ext.asyncio.session import AsyncSession
 from sqlalchemy import text
 from typing import List, Optional, Dict, Any
+import logging
 import httpx
 from app.config import settings
+
+logger = logging.getLogger(__name__)
 
 async def retrieve(
     query_text: str, 
@@ -86,9 +89,9 @@ async def retrieve(
                 
                 return reranked_candidates[:top_k]
             else:
-                print(f"Reranker API failed with status {resp.status_code}")
+                logger.info(f"Reranker returned {resp.status_code}, continuing with RRF ranking.")
     except Exception as e:
-        print(f"Reranker API error: {e}")
+        logger.info(f"Reranker service offline ({e}); continuing with RRF hybrid ranking.")
         
     # 5. Fallback: If reranker container is down, return the RRF hybrid results
     return candidates[:top_k]
