@@ -3,7 +3,10 @@ from sqlalchemy import Enum
 from typing import Optional
 import enum
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
+
+def get_utc_now():
+    return datetime.now(timezone.utc)
 
 class EdgeType(str, enum.Enum):
     supersedes = 'supersedes'
@@ -22,4 +25,4 @@ class StandardEdge(SQLModel, table=True):
         sa_column=Column(Enum(EdgeType), nullable=False)
     )
     notes: Optional[str] = None
-    created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = Field(default_factory=get_utc_now, nullable=False)

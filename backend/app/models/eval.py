@@ -2,7 +2,10 @@ from sqlmodel import SQLModel, Field, Column
 from sqlalchemy.dialects.postgresql import ARRAY, TEXT
 from typing import Optional, List
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
+
+def get_utc_now():
+    return datetime.now(timezone.utc)
 
 class EvalQuery(SQLModel, table=True):
     __tablename__ = "eval_queries"
@@ -12,4 +15,4 @@ class EvalQuery(SQLModel, table=True):
     expected_is: List[str] = Field(sa_column=Column(ARRAY(TEXT), nullable=False))
     category: Optional[str] = None
     notes: Optional[str] = None
-    created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = Field(default_factory=get_utc_now, nullable=False)

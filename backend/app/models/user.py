@@ -1,7 +1,10 @@
 from sqlmodel import SQLModel, Field
 from typing import Optional
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
+
+def get_utc_now():
+    return datetime.now(timezone.utc)
 
 class User(SQLModel, table=True):
     __tablename__ = "users"
@@ -12,7 +15,7 @@ class User(SQLModel, table=True):
     name: Optional[str] = None
     role: str = Field(default="user")
     is_active: bool = Field(default=True)
-    created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = Field(default_factory=get_utc_now, nullable=False)
 
 class ApiKey(SQLModel, table=True):
     __tablename__ = "api_keys"
@@ -22,5 +25,5 @@ class ApiKey(SQLModel, table=True):
     name: str
     is_active: bool = Field(default=True)
     rate_limit: int = Field(default=60)
-    created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = Field(default_factory=get_utc_now, nullable=False)
     expires_at: Optional[datetime] = None

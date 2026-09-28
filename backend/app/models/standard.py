@@ -5,7 +5,10 @@ from pgvector.sqlalchemy import Vector
 from typing import Optional, Dict, Any
 import enum
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
+
+def get_utc_now():
+    return datetime.now(timezone.utc)
 
 class StandardStatus(str, enum.Enum):
     current = 'current'
@@ -48,5 +51,5 @@ class Standard(SQLModel, table=True):
     
     raw_metadata: Optional[Dict[str, Any]] = Field(default=None, sa_column=Column(JSONB))
     
-    created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
-    updated_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = Field(default_factory=get_utc_now, nullable=False)
+    updated_at: datetime = Field(default_factory=get_utc_now, nullable=False)

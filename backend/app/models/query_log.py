@@ -4,7 +4,10 @@ from sqlalchemy import Enum
 from typing import Optional, List, Dict, Any
 import enum
 import uuid as uuid_pkg
-from datetime import datetime
+from datetime import datetime, timezone
+
+def get_utc_now():
+    return datetime.now(timezone.utc)
 
 class FeedbackType(str, enum.Enum):
     thumbs_up = 'thumbs_up'
@@ -33,7 +36,7 @@ class QueryLog(SQLModel, table=True):
     llm_latency_ms: Optional[int] = None
     
     total_latency_ms: Optional[int] = None
-    created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = Field(default_factory=get_utc_now, nullable=False)
 
 class QueryFeedback(SQLModel, table=True):
     __tablename__ = "query_feedback"
@@ -43,4 +46,4 @@ class QueryFeedback(SQLModel, table=True):
     feedback: FeedbackType = Field(sa_column=Column(Enum(FeedbackType), nullable=False))
     correct_is: Optional[str] = None
     comment: Optional[str] = None
-    created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = Field(default_factory=get_utc_now, nullable=False)
