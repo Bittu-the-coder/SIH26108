@@ -1,0 +1,1524 @@
+[
+    {
+        "is_number": "IS 17428 (Part 1)",
+        "is_number_base": "IS",
+        "title": "Data Privacy Assurance - Part 1 Engineering and Management Requirements",
+        "scope": "Sets out the requirements for establishing, implementing, maintaining and continually improving a Data Privacy Management System.",
+        "classification": "Information Technology",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 19978:2023",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 17428 (Part 2)",
+        "is_number_base": "IS",
+        "title": "Data Privacy Assurance - Part 2 Engineering and Management Guidelines",
+        "scope": "Provides guidelines for data privacy assurance.",
+        "classification": "Information Technology",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 16335",
+        "is_number_base": "IS",
+        "title": "Information Technology - Security Techniques - Information Security Incident Management",
+        "scope": "Basic concepts and phases of information security incident management.",
+        "classification": "Information Technology",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 11536",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 15748",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 17975",
+        "is_number_base": "IS",
+        "title": "Internet of Things (IoT) - Reference Architecture",
+        "scope": "General reference architecture for IoT systems and networks.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 19480:2022",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 17976",
+        "is_number_base": "IS",
+        "title": "Internet of Things (IoT) - Terminology",
+        "scope": "Standard vocabulary for IoT implementations in smart cities and automation.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21936:2019",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 18010",
+        "is_number_base": "IS",
+        "title": "Artificial Intelligence - Concepts and Terminology",
+        "scope": "Fundamental concepts for AI systems.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 18011",
+        "is_number_base": "IS",
+        "title": "Artificial Intelligence - Framework for Machine Learning Systems",
+        "scope": "Establishes a framework for ML development and deployment.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 17017 (Part 1)",
+        "is_number_base": "IS",
+        "title": "Electric Vehicle Conductive AC Charging System",
+        "scope": "General requirements for EV AC charging stations.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 20912:2019",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 19480:2022",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 21109:2021",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 17017 (Part 21)",
+        "is_number_base": "IS",
+        "title": "Electric Vehicle Charging - Communication Protocol",
+        "scope": "V2G (Vehicle-to-Grid) communication interface standard.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 16102 (Part 1)",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 20654:2024",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 18010",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 16444",
+        "is_number_base": "IS",
+        "title": "A.c. Static Direct Connected Watt-Hour Smart Meter",
+        "scope": "Specifications for smart electricity meters for smart grids.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 4985",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 456",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 15489",
+        "is_number_base": "IS",
+        "title": "Information and Documentation - Records Management",
+        "scope": "Standardizes records management processes.",
+        "classification": "Information Technology",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 17624",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 21844:2022",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 15997",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 456",
+        "is_number_base": "IS",
+        "title": "Plain and Reinforced Concrete - Code of Practice",
+        "scope": "General structural use of plain and reinforced concrete.",
+        "classification": "Civil Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 17017 (Part 1)",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 15683",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 17428 (Part 2)",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 800",
+        "is_number_base": "IS",
+        "title": "General Construction in Steel - Code of Practice",
+        "scope": "Design and construction of steel structures.",
+        "classification": "Civil Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 19678:2019",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 4985",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 1786",
+        "is_number_base": "IS",
+        "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement",
+        "scope": "Requirements of deformed steel bars and wires for use as reinforcement in concrete.",
+        "classification": "Civil Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 16444",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 10500",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 1893 (Part 1)",
+        "is_number_base": "IS",
+        "title": "Criteria for Earthquake Resistant Design of Structures",
+        "scope": "General provisions and buildings for earthquake resilience.",
+        "classification": "Civil Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 2720",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 21242:2021",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 19678:2019",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 2062",
+        "is_number_base": "IS",
+        "title": "Hot Rolled Medium and High Tensile Structural Steel",
+        "scope": "Requirements for steel used for structural purposes.",
+        "classification": "Civil Engineering",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 4985",
+        "is_number_base": "IS",
+        "title": "Unplasticized PVC Pipes for Potable Water Supplies",
+        "scope": "PVC-U pipes intended for cold water services.",
+        "classification": "Civil Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 18485:2024",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 17017 (Part 1)",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 18559:2024",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 694",
+        "is_number_base": "IS",
+        "title": "Polyvinyl Chloride (PVC) Insulated Cables for Working Voltages up to 1100 V",
+        "scope": "PVC insulated cables for power and lighting.",
+        "classification": "Electrotechnical",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 732",
+        "is_number_base": "IS",
+        "title": "Code of Practice for Electrical Wiring Installations",
+        "scope": "Essential requirements and practices in electrical installations for buildings.",
+        "classification": "Electrotechnical",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 17428 (Part 1)",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 2720",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 1893 (Part 1)",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 1293",
+        "is_number_base": "IS",
+        "title": "Plugs and Socket-Outlets of Rated Voltage up to 250 V",
+        "scope": "Requirements and tests for plugs and socket-outlets for household purposes.",
+        "classification": "Electrotechnical",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 20516:2024",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 19978:2023",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 3854",
+        "is_number_base": "IS",
+        "title": "Switches for Domestic and Similar Purposes",
+        "scope": "Requirements for manually operated general purpose switches.",
+        "classification": "Electrotechnical",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 16102 (Part 1)",
+        "is_number_base": "IS",
+        "title": "Self-Ballasted LED Lamps for General Lighting Services",
+        "scope": "Safety requirements for LED lamps.",
+        "classification": "Electrotechnical",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21098:2020",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 15748",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 7390",
+        "is_number_base": "IS",
+        "title": "Furniture - Steel Office Chairs",
+        "scope": "Dimensions and performance requirements for steel office chairs.",
+        "classification": "Mechanical Engineering",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 15683",
+        "is_number_base": "IS",
+        "title": "Portable Fire Extinguishers - Performance and Construction",
+        "scope": "Requirements for portable fire extinguishers.",
+        "classification": "Mechanical Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 18311:2023",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 14489",
+        "is_number_base": "IS",
+        "title": "Code of Practice on Occupational Safety and Health Audit",
+        "scope": "Guidelines for occupational safety and health audit systems.",
+        "classification": "Mechanical Engineering",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 1363 (Part 1)",
+        "is_number_base": "IS",
+        "title": "Hexagon Head Bolts, Screws and Nuts",
+        "scope": "Product grade C hexagon head bolts.",
+        "classification": "Mechanical Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21446:2020",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 1536",
+        "is_number_base": "IS",
+        "title": "Centrifugally Cast (Spun) Iron Pressure Pipes for Water, Gas and Sewage",
+        "scope": "Specifications for spun iron pipes.",
+        "classification": "Mechanical Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 1893 (Part 1)",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 21962:2019",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 21290:2021",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 11871",
+        "is_number_base": "IS",
+        "title": "Methods for Determination of Flammability and Flame Resistance of Textile Fabrics",
+        "scope": "Test methods for flame retardant clothing.",
+        "classification": "Textiles",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21242:2021",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 15748",
+        "is_number_base": "IS",
+        "title": "Protective Clothing for Industrial Workers",
+        "scope": "Safety apparel requirements against mechanical and thermal hazards.",
+        "classification": "Textiles",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 15683",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 17309",
+        "is_number_base": "IS",
+        "title": "Geotextiles - Specifications for Subgrade Stabilization",
+        "scope": "Geotextiles used in road and highway construction.",
+        "classification": "Textiles",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 13450 (Part 1)",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 17428 (Part 2)",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 13450 (Part 1)",
+        "is_number_base": "IS",
+        "title": "Medical Electrical Equipment - General Requirements for Basic Safety",
+        "scope": "Safety testing for hospital electrical devices.",
+        "classification": "Medical",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 16289",
+        "is_number_base": "IS",
+        "title": "Medical Face Masks - Requirements and Test Methods",
+        "scope": "Specifications for surgical and N95 grade medical masks.",
+        "classification": "Medical",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21352:2020",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 17624",
+        "is_number_base": "IS",
+        "title": "Non-Invasive Sphygmomanometers",
+        "scope": "Requirements for electronic blood pressure measuring devices.",
+        "classification": "Medical",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21477:2019",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 18010",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 10500",
+        "is_number_base": "IS",
+        "title": "Drinking Water - Specification",
+        "scope": "Requirements and methods of sampling and test for drinking water.",
+        "classification": "Chemicals",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 1786",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 15410",
+        "is_number_base": "IS",
+        "title": "Packaged Drinking Water (Other than Natural Mineral Water)",
+        "scope": "Quality standards for bottled drinking water.",
+        "classification": "Chemicals",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21352:2020",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 19097:2021",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 2720",
+        "is_number_base": "IS",
+        "title": "Methods of Test for Soils",
+        "scope": "Soil testing methodology for chemical and physical properties.",
+        "classification": "Chemicals",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 19978:2023",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 19903:2021",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 11536",
+        "is_number_base": "IS",
+        "title": "Processed Cereal Based Complementary Foods",
+        "scope": "Specifications for infant cereal foods.",
+        "classification": "Food & Agriculture",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 15495",
+        "is_number_base": "IS",
+        "title": "Printing Ink for Food Packaging - Code of Practice",
+        "scope": "Safety limits for inks used in food wrappers.",
+        "classification": "Food & Agriculture",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 732",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 15997",
+        "is_number_base": "IS",
+        "title": "Low Carbon Sugar - Specification",
+        "scope": "Requirements for low carbon emission sugar processing.",
+        "classification": "Food & Agriculture",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 19978:2023",
+        "is_number_base": "IS 19978",
+        "title": "General Specifications for Metallurgy Materials - Part 3",
+        "scope": "Provides guidelines and test methods for metallurgy products to ensure quality and safety compliance.",
+        "classification": "Metallurgy",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 15489",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 18559:2024",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 20456:2024",
+        "is_number_base": "IS 20456",
+        "title": "General Specifications for Chemicals Materials - Part 4",
+        "scope": "Provides guidelines and test methods for chemicals products to ensure quality and safety compliance.",
+        "classification": "Chemicals",
+        "status": "superseded",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 19601:2022",
+        "is_number_base": "IS 19601",
+        "title": "General Specifications for Textiles Materials - Part 4",
+        "scope": "Provides guidelines and test methods for textiles products to ensure quality and safety compliance.",
+        "classification": "Textiles",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21446:2020",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 18011",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21290:2021",
+        "is_number_base": "IS 21290",
+        "title": "Cloud Computing Security - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for cloud computing security in government deployments.",
+        "classification": "Information Technology",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 20272:2022",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 21870:2024",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 20507:2021",
+        "is_number_base": "IS 20507",
+        "title": "General Specifications for Civil Engineering Materials - Part 4",
+        "scope": "Provides guidelines and test methods for civil engineering products to ensure quality and safety compliance.",
+        "classification": "Civil Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 17428 (Part 2)",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 19002:2023",
+        "is_number_base": "IS 19002",
+        "title": "General Specifications for Metallurgy Materials - Part 1",
+        "scope": "Provides guidelines and test methods for metallurgy products to ensure quality and safety compliance.",
+        "classification": "Metallurgy",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21511:2019",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 18439:2022",
+        "is_number_base": "IS 18439",
+        "title": "General Specifications for Civil Engineering Materials - Part 1",
+        "scope": "Provides guidelines and test methods for civil engineering products to ensure quality and safety compliance.",
+        "classification": "Civil Engineering",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 21721:2021",
+        "is_number_base": "IS 21721",
+        "title": "General Specifications for Textiles Materials - Part 2",
+        "scope": "Provides guidelines and test methods for textiles products to ensure quality and safety compliance.",
+        "classification": "Textiles",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 17309",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 14489",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 18676:2020",
+        "is_number_base": "IS 18676",
+        "title": "General Specifications for Mechanical Engineering Materials - Part 1",
+        "scope": "Provides guidelines and test methods for mechanical engineering products to ensure quality and safety compliance.",
+        "classification": "Mechanical Engineering",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 21962:2019",
+        "is_number_base": "IS 21962",
+        "title": "General Specifications for Mechanical Engineering Materials - Part 2",
+        "scope": "Provides guidelines and test methods for mechanical engineering products to ensure quality and safety compliance.",
+        "classification": "Mechanical Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 10500",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 19651:2022",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 18115:2023",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 19903:2021",
+        "is_number_base": "IS 19903",
+        "title": "General Specifications for Chemicals Materials - Part 2",
+        "scope": "Provides guidelines and test methods for chemicals products to ensure quality and safety compliance.",
+        "classification": "Chemicals",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 17975",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 20697:2022",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 20654:2024",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21477:2019",
+        "is_number_base": "IS 21477",
+        "title": "General Specifications for Electrotechnical Materials - Part 5",
+        "scope": "Provides guidelines and test methods for electrotechnical products to ensure quality and safety compliance.",
+        "classification": "Electrotechnical",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 10500",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 20591:2022",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 17976",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21507:2020",
+        "is_number_base": "IS 21507",
+        "title": "Predictive Maintenance Algorithms - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for predictive maintenance algorithms in government deployments.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 16335",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 19480:2022",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 21352:2020",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 19478:2021",
+        "is_number_base": "IS 19478",
+        "title": "General Specifications for Electrotechnical Materials - Part 4",
+        "scope": "Provides guidelines and test methods for electrotechnical products to ensure quality and safety compliance.",
+        "classification": "Electrotechnical",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 18604:2024",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 20507:2021",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21730:2021",
+        "is_number_base": "IS 21730",
+        "title": "Cloud Computing Security - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for cloud computing security in government deployments.",
+        "classification": "Smart Automation",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 1363 (Part 1)",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 21334:2019",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 456",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 20654:2024",
+        "is_number_base": "IS 20654",
+        "title": "Edge Computing Protocols - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for edge computing protocols in government deployments.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21477:2019",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 21730:2021",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 17017 (Part 21)",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 19497:2021",
+        "is_number_base": "IS 19497",
+        "title": "Biometric Access Systems - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for biometric access systems in government deployments.",
+        "classification": "Information Technology",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 19880:2022",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 18010",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21723:2022",
+        "is_number_base": "IS 21723",
+        "title": "Predictive Maintenance Algorithms - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for predictive maintenance algorithms in government deployments.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 21334:2019",
+        "is_number_base": "IS 21334",
+        "title": "General Specifications for Electrotechnical Materials - Part 2",
+        "scope": "Provides guidelines and test methods for electrotechnical products to ensure quality and safety compliance.",
+        "classification": "Electrotechnical",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 10500",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 20654:2024",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 4985",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21446:2020",
+        "is_number_base": "IS 21446",
+        "title": "Cloud Computing Security - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for cloud computing security in government deployments.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 19678:2019",
+        "is_number_base": "IS 19678",
+        "title": "General Specifications for Food & Agriculture Materials - Part 2",
+        "scope": "Provides guidelines and test methods for food & agriculture products to ensure quality and safety compliance.",
+        "classification": "Food & Agriculture",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 18604:2024",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 21870:2024",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21511:2019",
+        "is_number_base": "IS 21511",
+        "title": "Industrial IoT Devices - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for industrial iot devices in government deployments.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21862:2024",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 18604:2024",
+        "is_number_base": "IS 18604",
+        "title": "General Specifications for Medical Materials - Part 5",
+        "scope": "Provides guidelines and test methods for medical products to ensure quality and safety compliance.",
+        "classification": "Medical",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 18559:2024",
+        "is_number_base": "IS 18559",
+        "title": "Biometric Access Systems - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for biometric access systems in government deployments.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21862:2024",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 19080:2020",
+        "is_number_base": "IS 19080",
+        "title": "General Specifications for Mechanical Engineering Materials - Part 2",
+        "scope": "Provides guidelines and test methods for mechanical engineering products to ensure quality and safety compliance.",
+        "classification": "Mechanical Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 800",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 19497:2021",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 20591:2022",
+        "is_number_base": "IS 20591",
+        "title": "General Specifications for Textiles Materials - Part 4",
+        "scope": "Provides guidelines and test methods for textiles products to ensure quality and safety compliance.",
+        "classification": "Textiles",
+        "status": "superseded",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 20405:2020",
+        "is_number_base": "IS 20405",
+        "title": "Autonomous Vehicle Communications - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for autonomous vehicle communications in government deployments.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 13450 (Part 1)",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 21721:2021",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 18196:2019",
+        "is_number_base": "IS 18196",
+        "title": "General Specifications for Electrotechnical Materials - Part 2",
+        "scope": "Provides guidelines and test methods for electrotechnical products to ensure quality and safety compliance.",
+        "classification": "Electrotechnical",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 1363 (Part 1)",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 21162:2023",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 18559:2024",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 18994:2022",
+        "is_number_base": "IS 18994",
+        "title": "Autonomous Vehicle Communications - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for autonomous vehicle communications in government deployments.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 20710:2019",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 19480:2022",
+        "is_number_base": "IS 19480",
+        "title": "Edge Computing Protocols - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for edge computing protocols in government deployments.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 16289",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 19127:2020",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 694",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21936:2019",
+        "is_number_base": "IS 21936",
+        "title": "Blockchain for Supply Chain - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for blockchain for supply chain in government deployments.",
+        "classification": "Smart Automation",
+        "status": "superseded",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 18044:2019",
+        "is_number_base": "IS 18044",
+        "title": "General Specifications for Textiles Materials - Part 3",
+        "scope": "Provides guidelines and test methods for textiles products to ensure quality and safety compliance.",
+        "classification": "Textiles",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 21730:2021",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 18439:2022",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 18115:2023",
+        "is_number_base": "IS 18115",
+        "title": "Cloud Computing Security - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for cloud computing security in government deployments.",
+        "classification": "Information Technology",
+        "status": "superseded",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 21162:2023",
+        "is_number_base": "IS 21162",
+        "title": "General Specifications for Food & Agriculture Materials - Part 2",
+        "scope": "Provides guidelines and test methods for food & agriculture products to ensure quality and safety compliance.",
+        "classification": "Food & Agriculture",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 19880:2022",
+        "is_number_base": "IS 19880",
+        "title": "General Specifications for Metallurgy Materials - Part 4",
+        "scope": "Provides guidelines and test methods for metallurgy products to ensure quality and safety compliance.",
+        "classification": "Metallurgy",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 19678:2019",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21611:2021",
+        "is_number_base": "IS 21611",
+        "title": "General Specifications for Chemicals Materials - Part 1",
+        "scope": "Provides guidelines and test methods for chemicals products to ensure quality and safety compliance.",
+        "classification": "Chemicals",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 17428 (Part 2)",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 19080:2020",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21862:2024",
+        "is_number_base": "IS 21862",
+        "title": "Autonomous Vehicle Communications - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for autonomous vehicle communications in government deployments.",
+        "classification": "Information Technology",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 21936:2019",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 21477:2019",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 19127:2020",
+        "is_number_base": "IS 19127",
+        "title": "Blockchain for Supply Chain - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for blockchain for supply chain in government deployments.",
+        "classification": "Smart Automation",
+        "status": "superseded",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 18311:2023",
+        "is_number_base": "IS 18311",
+        "title": "Predictive Maintenance Algorithms - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for predictive maintenance algorithms in government deployments.",
+        "classification": "Information Technology",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 13450 (Part 1)",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 19452:2019",
+        "is_number_base": "IS 19452",
+        "title": "General Specifications for Medical Materials - Part 1",
+        "scope": "Provides guidelines and test methods for medical products to ensure quality and safety compliance.",
+        "classification": "Medical",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 14489",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21087:2023",
+        "is_number_base": "IS 21087",
+        "title": "General Specifications for Textiles Materials - Part 3",
+        "scope": "Provides guidelines and test methods for textiles products to ensure quality and safety compliance.",
+        "classification": "Textiles",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 18676:2020",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 19002:2023",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21753:2020",
+        "is_number_base": "IS 21753",
+        "title": "Smart Water Metering - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for smart water metering in government deployments.",
+        "classification": "Information Technology",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 20654:2024",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 11536",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 18009:2023",
+        "is_number_base": "IS 18009",
+        "title": "General Specifications for Metallurgy Materials - Part 1",
+        "scope": "Provides guidelines and test methods for metallurgy products to ensure quality and safety compliance.",
+        "classification": "Metallurgy",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 20912:2019",
+        "is_number_base": "IS 20912",
+        "title": "Cloud Computing Security - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for cloud computing security in government deployments.",
+        "classification": "Information Technology",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 18485:2024",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 17976",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 21662:2019",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 20697:2022",
+        "is_number_base": "IS 20697",
+        "title": "Industrial IoT Devices - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for industrial iot devices in government deployments.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 21242:2021",
+        "is_number_base": "IS 21242",
+        "title": "General Specifications for Metallurgy Materials - Part 4",
+        "scope": "Provides guidelines and test methods for metallurgy products to ensure quality and safety compliance.",
+        "classification": "Metallurgy",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 14489",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 20456:2024",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 17976",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21662:2019",
+        "is_number_base": "IS 21662",
+        "title": "Edge Computing Protocols - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for edge computing protocols in government deployments.",
+        "classification": "Information Technology",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 21352:2020",
+        "is_number_base": "IS 21352",
+        "title": "Edge Computing Protocols - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for edge computing protocols in government deployments.",
+        "classification": "Information Technology",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 20516:2024",
+        "is_number_base": "IS 20516",
+        "title": "General Specifications for Food & Agriculture Materials - Part 2",
+        "scope": "Provides guidelines and test methods for food & agriculture products to ensure quality and safety compliance.",
+        "classification": "Food & Agriculture",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 21109:2021",
+        "is_number_base": "IS 21109",
+        "title": "General Specifications for Chemicals Materials - Part 1",
+        "scope": "Provides guidelines and test methods for chemicals products to ensure quality and safety compliance.",
+        "classification": "Chemicals",
+        "status": "superseded",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 20710:2019",
+        "is_number_base": "IS 20710",
+        "title": "General Specifications for Electrotechnical Materials - Part 5",
+        "scope": "Provides guidelines and test methods for electrotechnical products to ensure quality and safety compliance.",
+        "classification": "Electrotechnical",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 21962:2019",
+                "type": "informative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 20672:2023",
+        "is_number_base": "IS 20672",
+        "title": "Cloud Computing Security - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for cloud computing security in government deployments.",
+        "classification": "Smart Automation",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 18311:2023",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 18044:2019",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 21446:2020",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 19651:2022",
+        "is_number_base": "IS 19651",
+        "title": "General Specifications for Civil Engineering Materials - Part 1",
+        "scope": "Provides guidelines and test methods for civil engineering products to ensure quality and safety compliance.",
+        "classification": "Civil Engineering",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 19903:2021",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21870:2024",
+        "is_number_base": "IS 21870",
+        "title": "General Specifications for Food & Agriculture Materials - Part 5",
+        "scope": "Provides guidelines and test methods for food & agriculture products to ensure quality and safety compliance.",
+        "classification": "Food & Agriculture",
+        "status": "superseded",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 18485:2024",
+        "is_number_base": "IS 18485",
+        "title": "General Specifications for Metallurgy Materials - Part 3",
+        "scope": "Provides guidelines and test methods for metallurgy products to ensure quality and safety compliance.",
+        "classification": "Metallurgy",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 18080:2020",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 21162:2023",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 20272:2022",
+        "is_number_base": "IS 20272",
+        "title": "General Specifications for Textiles Materials - Part 3",
+        "scope": "Provides guidelines and test methods for textiles products to ensure quality and safety compliance.",
+        "classification": "Textiles",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 18559:2024",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21844:2022",
+        "is_number_base": "IS 21844",
+        "title": "General Specifications for Textiles Materials - Part 5",
+        "scope": "Provides guidelines and test methods for textiles products to ensure quality and safety compliance.",
+        "classification": "Textiles",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 18604:2024",
+                "type": "normative_ref"
+            },
+            {
+                "is_number": "IS 18311:2023",
+                "type": "normative_ref"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 21098:2020",
+        "is_number_base": "IS 21098",
+        "title": "Edge Computing Protocols - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for edge computing protocols in government deployments.",
+        "classification": "Information Technology",
+        "status": "current",
+        "cross_references": [
+            {
+                "is_number": "IS 1893 (Part 1)",
+                "type": "informative_ref"
+            },
+            {
+                "is_number": "IS 1536",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 19097:2021",
+        "is_number_base": "IS 19097",
+        "title": "General Specifications for Medical Materials - Part 5",
+        "scope": "Provides guidelines and test methods for medical products to ensure quality and safety compliance.",
+        "classification": "Medical",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 21753:2020",
+                "type": "supersedes"
+            },
+            {
+                "is_number": "IS 7390",
+                "type": "supersedes"
+            }
+        ]
+    },
+    {
+        "is_number": "IS 19108:2020",
+        "is_number_base": "IS 19108",
+        "title": "General Specifications for Electrotechnical Materials - Part 3",
+        "scope": "Provides guidelines and test methods for electrotechnical products to ensure quality and safety compliance.",
+        "classification": "Electrotechnical",
+        "status": "current",
+        "cross_references": []
+    },
+    {
+        "is_number": "IS 18080:2020",
+        "is_number_base": "IS 18080",
+        "title": "Biometric Access Systems - General Requirements and Interoperability",
+        "scope": "Specifies the architecture, data formats, and security requirements for biometric access systems in government deployments.",
+        "classification": "Smart Automation",
+        "status": "superseded",
+        "cross_references": [
+            {
+                "is_number": "IS 16335",
+                "type": "normative_ref"
+            }
+        ]
+    }
+]
