@@ -44,15 +44,21 @@ Respond in JSON format with a list of recommendations matching this schema:
   ]
 }}
 """
-    try:
-        response = await litellm.acompletion(
-            api_key=settings.GEMINI_API_KEY,
-            model="gemini/gemini-2.0-flash",
-            messages=[{"role": "user", "content": prompt}],
-            response_format={"type": "json_object"}
-        )
-        content = response.choices[0].message.content
-        return json.loads(content).get("recommendations", [])
-    except Exception as e:
-        logger.error(f"LLM synthesis failed: {e}")
-        return []
+    models_to_try = [
+        "gemini/gemini-3.8-flash",
+    ]
+    for model_name in models_to_try:
+        try:
+            response = await litellm.acompletion(
+                api_key=settings.GEMINI_API_KEY,
+                model=model_name,
+                messages=[{"role": "user", "content": prompt}],
+                response_format={"type": "json_object"}
+            )
+            content = response.choices[0].message.content
+            return json.loads(content).get("recommendations", [])
+        except Exception as e:
+            logger.warning(f"LLM synthesis with {model_name} failed: {e}")
+            
+    logger.error("All LLM synthesis model attempts failed.")
+    return []

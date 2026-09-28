@@ -36,7 +36,7 @@ async def log_query_task(
             retrieved_ids=retrieved_ids,
             retrieval_scores=retrieval_scores,
             llm_response=llm_response,
-            llm_model="gemini-2.0-flash",
+            llm_model="gemini-3.8-flash",
             total_latency_ms=total_latency_ms,
         )
         session.add(log)
@@ -98,7 +98,7 @@ async def recommend_standards(
     if not recommendations and candidates:
         for cand in candidates[:request.top_k]:
             score = cand.get("rrf_score")
-            conf = round(min(score * 50.0, 0.95), 2) if score else 0.85
+            conf = round(min(float(score) * 50.0, 0.95), 2) if score is not None else 0.85
             recommendations.append(
                 Recommendation(
                     is_number=cand["is_number"],
@@ -122,7 +122,7 @@ async def recommend_standards(
         warnings=[],
         metadata=MetadataInfo(
             retrieval_method="hybrid_bm25_vector",
-            llm_model="gemini-2.0-flash",
+            llm_model="gemini-3.8-flash",
             total_latency_ms=latency_ms
         )
     )
@@ -133,7 +133,7 @@ async def recommend_standards(
     await set_cached(cache_key, response_dump, ttl_seconds=3600)
     
     retrieved_ids = [c['id'] for c in candidates]
-    retrieval_scores = [c.get('rrf_score', 0.0) for c in candidates]
+    retrieval_scores = [float(c.get('rrf_score', 0.0)) if c.get('rrf_score') is not None else 0.0 for c in candidates]
     
     background_tasks.add_task(
         log_query_task,
