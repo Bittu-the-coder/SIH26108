@@ -25,6 +25,7 @@ async def log_query_task(
     retrieval_scores: list,
     llm_response: dict,
     total_latency_ms: int,
+    llm_model: str = "gemini-3.8-flash",
 ):
     async with AsyncSession(engine) as session:
         log = QueryLog(
@@ -36,7 +37,7 @@ async def log_query_task(
             retrieved_ids=retrieved_ids,
             retrieval_scores=retrieval_scores,
             llm_response=llm_response,
-            llm_model="gemini-3.8-flash",
+            llm_model=llm_model,
             total_latency_ms=total_latency_ms,
         )
         session.add(log)
@@ -82,7 +83,7 @@ async def recommend_standards(
             related_map[cand['is_number']] = related
             
     # 6. LLM Synthesis
-    recommendations_data = await synthesize(search_query, candidates, related_map)
+    recommendations_data, used_model = await synthesize(search_query, candidates, related_map)
     
     # 7. Formulate Response
     recommendations = []
@@ -122,7 +123,7 @@ async def recommend_standards(
         warnings=[],
         metadata=MetadataInfo(
             retrieval_method="hybrid_bm25_vector",
-            llm_model="gemini-3.8-flash",
+            llm_model=used_model,
             total_latency_ms=latency_ms
         )
     )
@@ -145,7 +146,8 @@ async def recommend_standards(
         retrieved_ids=retrieved_ids,
         retrieval_scores=retrieval_scores,
         llm_response={"recommendations": recommendations_data, "warnings": []},
-        total_latency_ms=latency_ms
+        total_latency_ms=latency_ms,
+        llm_model=used_model,
     )
     
     return response
