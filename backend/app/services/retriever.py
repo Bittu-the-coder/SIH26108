@@ -1,6 +1,8 @@
 from sqlmodel.ext.asyncio.session import AsyncSession
 from sqlalchemy import text
 from typing import List, Optional, Dict, Any
+import httpx
+from app.config import settings
 
 async def retrieve(
     query_text: str, 
@@ -45,7 +47,7 @@ async def retrieve(
     SELECT id, is_number, title, scope, status, rrf_score
     FROM fused
     ORDER BY rrf_score DESC
-    LIMIT :top_k;
+    LIMIT 20;
     """
     
     result = await session.execute(
@@ -53,5 +55,40 @@ async def retrieve(
         {"query_embedding": str(query_embedding), "query_text": query_text, "top_k": top_k}
     )
     
+    
     rows = result.mappings().all()
-    return [dict(row) for row in rows]
+    candidates = [dict(row) for row in rows]
+    
+    if not candidates:
+        return []
+
+    # 4. Rerank the top 20 candidates
+    # Combine title and scope to give the reranker maximum context
+    texts_to_rerank = [f"{c['title']} - {c['scope']}" for c in candidates]
+    
+    try:
+        async with httpx.AsyncClient() as client:
+            resp = await client.post(
+                settings.BGE_RERANKER_URL,
+                json={"query": query_text, "texts": texts_to_rerank},
+                timeout=10.0
+            )
+            
+            if resp.status_code == 200:
+                rerank_results = resp.json()
+                # TEI returns [{"index": i, "score": s}, ...] already sorted by score DESC
+                reranked_candidates = []
+                for res in rerank_results:
+                    idx = res["index"]
+                    candidate = candidates[idx].copy()
+                    candidate["rerank_score"] = res["score"]
+                    reranked_candidates.append(candidate)
+                
+                return reranked_candidates[:top_k]
+            else:
+                print(f"Reranker API failed with status {resp.status_code}")
+    except Exception as e:
+        print(f"Reranker API error: {e}")
+        
+    # 5. Fallback: If reranker container is down, return the RRF hybrid results
+    return candidates[:top_k]

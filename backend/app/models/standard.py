@@ -44,7 +44,7 @@ class Standard(SQLModel, table=True):
     qco_details: Optional[str] = None
     source_url: Optional[str] = None
     
-    embedding: Optional[Any] = Field(default=None, sa_column=Column(Vector(1024)))
+    embedding: Optional[Any] = Field(default=None, sa_column=Column(Vector(384)))
     
     raw_metadata: Optional[Dict[str, Any]] = Field(default=None, sa_column=Column(JSONB))
     
