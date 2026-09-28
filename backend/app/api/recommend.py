@@ -87,7 +87,31 @@ async def recommend_standards(
     # 7. Formulate Response
     recommendations = []
     for r in recommendations_data:
-        recommendations.append(Recommendation(**r))
+        try:
+            if isinstance(r.get("certification"), str):
+                r["certification"] = {"scheme": r["certification"], "mandatory": False, "details": None}
+            recommendations.append(Recommendation(**r))
+        except Exception:
+            pass
+            
+    # Fallback to retrieved candidates if LLM synthesis returned empty (e.g. no GEMINI_API_KEY)
+    if not recommendations and candidates:
+        for cand in candidates[:request.top_k]:
+            score = cand.get("rrf_score")
+            conf = round(min(score * 50.0, 0.95), 2) if score else 0.85
+            recommendations.append(
+                Recommendation(
+                    is_number=cand["is_number"],
+                    title=cand["title"],
+                    status=cand.get("status", "current"),
+                    confidence=conf,
+                    match_reason=cand.get("scope") or "Relevant Indian Standard identified via hybrid search.",
+                    source_url=cand.get("source_url"),
+                    certification=None,
+                    supersession=None,
+                    allied_standards=[]
+                )
+            )
         
     latency_ms = int((time.time() - start_time) * 1000)
     

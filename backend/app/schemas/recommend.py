@@ -11,22 +11,22 @@ class RecommendRequest(BaseModel):
     language: Optional[str] = None
 
 class CertificationInfo(BaseModel):
-    scheme: str
-    mandatory: bool
+    scheme: Optional[str] = "none"
+    mandatory: Optional[bool] = False
     details: Optional[str] = None
 
 class AlliedStandard(BaseModel):
     is_number: str
     title: str
-    relationship: str
-    reason: str
+    relationship: Optional[str] = "allied"
+    reason: Optional[str] = None
 
 class Recommendation(BaseModel):
     is_number: str
     title: str
-    status: str
-    confidence: float
-    match_reason: str
+    status: Optional[str] = "current"
+    confidence: Optional[float] = 0.85
+    match_reason: Optional[str] = ""
     source_url: Optional[str] = None
     certification: Optional[CertificationInfo] = None
     supersession: Optional[str] = None

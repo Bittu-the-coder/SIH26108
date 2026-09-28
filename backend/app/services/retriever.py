@@ -15,11 +15,11 @@ async def retrieve(
     sql_query = """
     WITH vector_results AS (
       SELECT id, is_number, title, scope, status,
-             1 - (embedding <=> :query_embedding::vector) AS vec_score,
-             ROW_NUMBER() OVER (ORDER BY embedding <=> :query_embedding::vector) AS vec_rank
+             1 - (embedding <=> CAST(:query_embedding AS vector)) AS vec_score,
+             ROW_NUMBER() OVER (ORDER BY embedding <=> CAST(:query_embedding AS vector)) AS vec_rank
       FROM standards
-      WHERE status = 'current'
-      ORDER BY embedding <=> :query_embedding::vector
+      WHERE status = 'current' AND embedding IS NOT NULL
+      ORDER BY embedding <=> CAST(:query_embedding AS vector)
       LIMIT 20
     ),
     bm25_results AS (
