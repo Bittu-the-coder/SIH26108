@@ -23,8 +23,8 @@ async def main():
         if choice == '1':
             email = input("Email: ")
             
-            result = await session.execute(select(User).where(User.email == email))
-            if result.scalars().first():
+            result = await session.exec(select(User).where(User.email == email))
+            if result.first():
                 print(f"User {email} already exists.")
                 return
                 
