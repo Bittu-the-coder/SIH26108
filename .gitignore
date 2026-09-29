@@ -13,3 +13,6 @@ DESIGN.md
 frontend_plan.md
 integration_plan.md
 VIDEO_SCRIPT_GUIDE.md
+
+*.pdf
+*.pyc
