@@ -52,7 +52,7 @@ export function RecommendationCard({ item, index, queryId, isDemo }: Recommendat
   };
 
   return (
-    <div className="card" style={{ marginBottom: "var(--space-lg)" }}>
+    <div className="card" style={{ marginBottom: "var(--space-lg)", maxWidth: "100%", boxSizing: "border-box", overflow: "hidden", wordBreak: "break-word" }}>
       {/* Top Header: Rank, Standard Code, Confidence & Status */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "12px", marginBottom: "var(--space-sm)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>

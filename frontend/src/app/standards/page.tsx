@@ -65,13 +65,7 @@ export default function StandardsDirectoryPage() {
           </p>
         </div>
 
-        {/* Demo Mode Indicator */}
-        {demoActive && (
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", padding: "10px 16px", backgroundColor: "#eef6ff", border: "1px solid #b3d4fc", borderRadius: "var(--radius-sm)", marginBottom: "var(--space-lg)", fontSize: "13px", color: "#1a56db" }}>
-            <Info size={15} />
-            <span><strong>Demo Mode</strong> — Browsing pre-loaded sample standards data.</span>
-          </div>
-        )}
+
 
         {/* Search & Filter Controls */}
         <div

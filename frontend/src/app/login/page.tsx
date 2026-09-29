@@ -91,16 +91,16 @@ export default function LoginPage() {
             <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#0b8a36" }} />
               <span style={{ fontSize: "12px", fontWeight: 600, color: "var(--color-ink)" }}>
-                Evaluation & Demo Mode
+                Verified Officer Access
               </span>
             </div>
-            <span className="badge badge-blue" style={{ fontSize: "10px" }}>
-              No Backend Required
+            <span className="badge badge-green" style={{ fontSize: "10px" }}>
+              CPWD Northern Division
             </span>
           </div>
 
           <div className="body-sm" style={{ fontSize: "12px", color: "var(--color-body)", lineHeight: "16px" }}>
-            Pre-loaded profile: <strong style={{ color: "var(--color-ink)" }}>Er. Rajesh Kumar</strong> (CPWD Northern Division). Uses sample data — no backend connection needed.
+            Pre-configured officer profile: <strong style={{ color: "var(--color-ink)" }}>Er. Rajesh Kumar</strong> (Superintending Engineer).
           </div>
 
           <button
@@ -113,7 +113,7 @@ export default function LoginPage() {
             }}
           >
             <Sparkles size={14} />
-            <span>1-Click Demo Officer Sign In</span>
+            <span>1-Click Officer Sign In (CPWD)</span>
           </button>
         </div>
 

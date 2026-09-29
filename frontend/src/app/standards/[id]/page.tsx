@@ -100,13 +100,7 @@ export default function StandardDetailPage() {
           </Link>
         </div>
 
-        {/* Demo Indicator */}
-        {demoActive && (
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", padding: "10px 16px", backgroundColor: "#eef6ff", border: "1px solid #b3d4fc", borderRadius: "var(--radius-sm)", marginBottom: "var(--space-lg)", fontSize: "13px", color: "#1a56db" }}>
-            <Info size={15} />
-            <span><strong>Demo Mode</strong> — Viewing sample standard data.</span>
-          </div>
-        )}
+
 
         {/* Main Header Card */}
         <div className="card" style={{ marginBottom: "var(--space-xl)", padding: "var(--space-xl)" }}>

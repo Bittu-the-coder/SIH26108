@@ -58,19 +58,7 @@ export default function RecommendPage() {
           </p>
         </div>
 
-        {/* Demo Mode Indicator */}
-        {demoActive && (
-          <div
-            style={{
-              display: "flex", alignItems: "center", gap: "8px", padding: "10px 16px",
-              backgroundColor: "#eef6ff", border: "1px solid #b3d4fc", borderRadius: "var(--radius-sm)",
-              marginBottom: "var(--space-lg)", fontSize: "13px", color: "#1a56db",
-            }}
-          >
-            <Info size={15} />
-            <span><strong>Demo Mode</strong> — Showing pre-loaded sample data. Results are not from the live backend.</span>
-          </div>
-        )}
+
 
         {/* Two-Column Responsive Grid */}
         <div className="recommend-layout-grid">
@@ -143,7 +131,7 @@ export default function RecommendPage() {
                     {error}
                   </p>
                   <p className="body-sm" style={{ color: "#b91c1c", marginTop: "6px", fontSize: "12px" }}>
-                    Check if the backend at <code>{process.env.NEXT_PUBLIC_API_URL || "API"}</code> is reachable, or switch to Demo Mode.
+                    Please check network connectivity or retry the request.
                   </p>
                 </div>
               </div>
@@ -178,17 +166,18 @@ export default function RecommendPage() {
                 </p>
               </div>
             ) : currentResult ? (
-              <div>
+              <div style={{ minWidth: 0, width: "100%", maxWidth: "100%" }}>
                 {/* Result Statistics Bar */}
                 <div
                   style={{
                     display: "flex", justifyContent: "space-between", alignItems: "center",
-                    flexWrap: "wrap", gap: "12px", padding: "var(--space-md)",
+                    flexWrap: "wrap", gap: "12px", padding: "12px 14px",
                     backgroundColor: "var(--color-canvas-elevated)", border: "1px solid var(--color-hairline)",
                     borderRadius: "var(--radius-sm)", marginBottom: "var(--space-lg)",
+                    maxWidth: "100%", boxSizing: "border-box", overflow: "hidden",
                   }}
                 >
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
                     <div>
                       <div className="mono-eyebrow" style={{ fontSize: "11px" }}>LANGUAGE</div>
                       <div style={{ fontWeight: 600, fontSize: "14px", color: "var(--color-ink)" }}>

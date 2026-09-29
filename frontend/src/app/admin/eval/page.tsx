@@ -89,28 +89,7 @@ export default function EvaluationPage() {
           </div>
         </div>
 
-        {/* Demo Indicator */}
-        {demoActive && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "10px 16px",
-              backgroundColor: "#eef6ff",
-              border: "1px solid #b3d4fc",
-              borderRadius: "var(--radius-sm)",
-              marginBottom: "var(--space-lg)",
-              fontSize: "13px",
-              color: "#1a56db",
-            }}
-          >
-            <Info size={15} />
-            <span>
-              <strong>Demo Mode Active</strong> — Running evaluation will simulate benchmark results without calling remote server.
-            </span>
-          </div>
-        )}
+
 
         {/* Error State */}
         {error && (

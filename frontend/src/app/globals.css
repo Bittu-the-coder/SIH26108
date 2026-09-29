@@ -84,12 +84,16 @@
 
 html {
   height: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   min-height: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
   background-color: var(--color-canvas);
   color: var(--color-ink);
   font-family: var(--font-sans);
@@ -295,9 +299,19 @@ input, textarea, select {
 /* Responsive Two-Column Layout for Spec Analyzer */
 .recommend-layout-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1.85fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.85fr);
   gap: var(--space-xl);
   align-items: start;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.recommend-layout-grid > * {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Responsive Footer Grid */
