@@ -95,7 +95,7 @@ export function DashboardShell({ children }: DashboardShellProps) {
             Officer Sign In Required
           </h2>
           <p className="body-md" style={{ marginBottom: "var(--space-xl)", color: "var(--color-body)" }}>
-            Access to the Bureau of Indian Standards Intelligence Portal & Spec Analyzer requires authenticated government or organization credentials.
+            Access to the Bisrant Indian Standards Intelligence Portal & Spec Analyzer requires authenticated government or organization credentials.
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
             <Link

@@ -7,3 +7,9 @@ skills-lock.json
 graft/
 
 .env
+
+.mcp.json
+DESIGN.md
+frontend_plan.md
+integration_plan.md
+VIDEO_SCRIPT_GUIDE.md

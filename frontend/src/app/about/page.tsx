@@ -12,10 +12,10 @@ export default function AboutPage() {
         <div style={{ marginBottom: "var(--space-2xl)" }}>
           <SectionEyebrow>SMART INDIA HACKATHON 2026</SectionEyebrow>
           <h1 className="heading-lg" style={{ color: "var(--color-ink)", marginBottom: "8px" }}>
-            Problem Statement SIH26108 Overview
+            Bisrant — SIH26108 Overview
           </h1>
           <p className="body-md">
-            AI-Powered Recommendation Engine for Identifying Applicable Indian Standards (BIS) in Procurement.
+            <strong>Bisrant</strong> is an AI-powered recommendation and compliance verification engine for identifying applicable Indian Standards (BIS) in public and private procurement.
           </p>
         </div>
 

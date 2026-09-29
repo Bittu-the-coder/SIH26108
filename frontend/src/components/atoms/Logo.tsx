@@ -69,12 +69,12 @@ export function Logo({ size = 28, showText = true, className = "" }: LogoProps) 
             <span
               style={{
                 fontWeight: 700,
-                fontSize: "15px",
+                fontSize: "16px",
                 letterSpacing: "-0.4px",
                 color: "var(--color-ink)",
               }}
             >
-              BIS Intelligence
+              Bisrant
             </span>
             <span
               style={{

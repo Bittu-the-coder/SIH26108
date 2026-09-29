@@ -13,11 +13,11 @@ export function Footer() {
               <Logo size={28} />
             </div>
             <p className="body-sm" style={{ maxWidth: "340px", marginBottom: "var(--space-md)", lineHeight: "20px" }}>
-              Smart India Hackathon 2026 (SIH26108). Empowering procurement officers and engineers with high-precision,
+              Smart India Hackathon 2026 (SIH26108). <strong>Bisrant</strong> empowers procurement officers and engineers with high-precision,
               automated Indian Standards compliance, cross-reference expansion, and tender clause synthesis.
             </p>
             <div className="mono-eyebrow" style={{ fontSize: "11px" }}>
-              BUREAU OF INDIAN STANDARDS (BIS) COMPLIANCE ENGINE
+              BISRANT · INDIAN STANDARDS (BIS) COMPLIANCE ENGINE
             </div>
           </div>
 

@@ -11,7 +11,7 @@ export default function DocsPage() {
         <div style={{ marginBottom: "var(--space-2xl)" }}>
           <SectionEyebrow>DEVELOPER & INTEGRATION DOCUMENTATION</SectionEyebrow>
           <h1 className="heading-lg" style={{ color: "var(--color-ink)", marginBottom: "8px" }}>
-            BIS Intelligence API Reference
+            Bisrant API Reference
           </h1>
           <p className="body-md">
             Integrate the Indian Standards recommendation engine directly into e-procurement portals,

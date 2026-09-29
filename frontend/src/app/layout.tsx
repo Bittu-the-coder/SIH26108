@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 import { AppLayoutRouter } from "@/components/layouts/AppLayoutRouter";
 
 export const metadata: Metadata = {
-  title: "BIS Standards Intelligence | AI Recommendation Engine",
-  description: "AI-Powered Recommendation Engine for identifying applicable Indian Standards (BIS) in public and private procurement specifications.",
+  title: "Bisrant | AI Indian Standards (BIS) Recommendation Engine",
+  description: "Bisrant is an AI-powered recommendation and compliance audit engine for identifying applicable Indian Standards (BIS) in public and private procurement specifications.",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },

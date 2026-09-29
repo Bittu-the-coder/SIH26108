@@ -94,7 +94,7 @@ export default function HomePage() {
                 lineHeight: "28px",
               }}
             >
-              The AI compliance recommendation engine for public procurement officers and engineers.
+              <strong>Bisrant</strong> is the AI compliance recommendation engine for public procurement officers and engineers.
               Paste raw specifications, tender schedules, or GeM descriptions in English or Hindi to extract
               verified BIS codes, mandatory clauses, and compliance checklists.
             </p>
