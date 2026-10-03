@@ -65,33 +65,31 @@ async def retrieve(
     if not candidates:
         return []
 
-    # 4. Rerank the top 20 candidates
-    # Combine title and scope to give the reranker maximum context
-    texts_to_rerank = [f"{c['title']} - {c['scope']}" for c in candidates]
+    # Rerank only if reranker is configured and enabled
+    reranker_url = settings.BGE_RERANKER_URL
+    reranker_enabled = bool(reranker_url and getattr(settings, 'RERANKER_ENABLED', False))
     
-    try:
-        async with httpx.AsyncClient() as client:
-            resp = await client.post(
-                settings.BGE_RERANKER_URL,
-                json={"query": query_text, "texts": texts_to_rerank},
-                timeout=10.0
-            )
-            
-            if resp.status_code == 200:
-                rerank_results = resp.json()
-                # TEI returns [{"index": i, "score": s}, ...] already sorted by score DESC
-                reranked_candidates = []
-                for res in rerank_results:
-                    idx = res["index"]
-                    candidate = candidates[idx].copy()
-                    candidate["rerank_score"] = res["score"]
-                    reranked_candidates.append(candidate)
-                
-                return reranked_candidates[:top_k]
-            else:
-                logger.info(f"Reranker returned {resp.status_code}, continuing with RRF ranking.")
-    except Exception as e:
-        logger.info(f"Reranker service offline ({e}); continuing with RRF hybrid ranking.")
-        
-    # 5. Fallback: If reranker container is down, return the RRF hybrid results
+    if reranker_enabled:
+        texts_to_rerank = [f"{c['title']} - {c.get('scope', '')}" for c in candidates]
+        try:
+            async with httpx.AsyncClient() as client:
+                resp = await client.post(
+                    reranker_url,
+                    json={"query": query_text, "texts": texts_to_rerank},
+                    timeout=10.0
+                )
+                if resp.status_code == 200:
+                    rerank_results = resp.json()
+                    reranked_candidates = []
+                    for res in rerank_results:
+                        idx = res["index"]
+                        candidate = candidates[idx].copy()
+                        candidate["rerank_score"] = res["score"]
+                        reranked_candidates.append(candidate)
+                    return reranked_candidates[:top_k]
+                else:
+                    logger.info(f"Reranker returned {resp.status_code}, using RRF ranking.")
+        except Exception as e:
+            logger.info(f"Reranker offline ({e}); using RRF hybrid ranking.")
+
     return candidates[:top_k]

@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     GROQ_MODEL: Optional[str] = None
     BGE_INFERENCE_URL: str = "http://localhost:8080/embed"
     BGE_RERANKER_URL: str = "http://localhost:8081/rerank"
+    RERANKER_ENABLED: bool = False
     JWT_SECRET: str = "supersecretkey_please_change_in_production"
     JWT_ALGORITHM: str = "HS256"
     JWT_EXPIRE_MINUTES: int = 60
